@@ -18,9 +18,9 @@ texture = ExtResource("1_4flbx")
 shape = SubResource("RectangleShape2D_4flbx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -2048
+limit_left = -2028
 limit_top = -1024
-limit_right = 2048
+limit_right = 2028
 limit_bottom = 1024
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

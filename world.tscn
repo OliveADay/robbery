@@ -19,6 +19,7 @@ sources/0 = SubResource("TileSetAtlasSource_fj7yv")
 script = ExtResource("1_fj7yv")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_set = SubResource("TileSet_tlwt5")
 
 [node name="Player" parent="." instance=ExtResource("3_tlwt5")]

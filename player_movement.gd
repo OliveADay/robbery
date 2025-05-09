@@ -4,8 +4,14 @@ const ACCELERATION = 10
 const DECCELERATION = 50
 const GENERATE_TIME = 120
 var current_time = 0
+var gold:Node2D
+
+func _ready() -> void:
+	gold = get_tree().get_first_node_in_group("gold")
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("debug_1"):
+		print(abs(Vector2(position-gold.position).length()))
 	var Xaxis = Input.get_axis("move_left", "move_right")
 	var Yaxis = Input.get_axis("move_down", "move_up")
 	if Xaxis:
@@ -23,7 +29,6 @@ func _physics_process(delta: float) -> void:
 		if current_time <=0:
 			current_time = GENERATE_TIME
 			$CPUParticles2D.set_amount(velocity.length()/10)
-			print(velocity.length()/10)
 		else:
 			current_time -= 1
 	else:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddhlusigmqcmw"]
+[gd_scene load_steps=8 format=3 uid="uid://ddhlusigmqcmw"]
 
 [ext_resource type="Texture2D" uid="uid://y4qud8kmolko" path="res://tileset-Sheet.png" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cy6ylx82jbodo" path="res://dungeonGen.gd" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://dpgj25tos5dxy" path="res://player.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://djcerga6rpo40" path="res://car.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://c2fgpwsxn0yq1" path="res://gold.tscn" id="5_036b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("1_f3sb7")
@@ -23,3 +25,8 @@ texture_filter = 1
 tile_set = SubResource("TileSet_tlwt5")
 
 [node name="Player" parent="." instance=ExtResource("3_tlwt5")]
+
+[node name="Car" parent="." instance=ExtResource("4_aqk2v")]
+
+[node name="Gold" parent="." instance=ExtResource("5_036b0")]
+position = Vector2(0, 55)

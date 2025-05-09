@@ -73,6 +73,8 @@ func _ready() -> void:
 					#$TileMap/Layer1.set_cell(Vector2i(x-128,y-128), -1, Vector2i(0,0))
 					
 	get_tree().get_first_node_in_group("player").position = rect_1.get_center()*16
+	get_tree().get_first_node_in_group("car").position = rect_1.get_center()*16
+	get_tree().get_first_node_in_group("gold").position = bank.get_center()*16
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

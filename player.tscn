@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpgj25tos5dxy"]
+[gd_scene load_steps=8 format=3 uid="uid://dpgj25tos5dxy"]
 
 [ext_resource type="Texture2D" uid="uid://c1yi66rkl8opa" path="res://player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://d17doh3ux42uo" path="res://player_movement.gd" id="1_onrkg"]
 [ext_resource type="FontFile" uid="uid://bnvgqox4dmx4r" path="res://04B_11_.TTF" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://c7gkek114xiq5" path="res://gold_whiteoutline.png" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://cf2fnj5cfbb4g" path="res://winning.gd" id="5_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(14, 14)
@@ -29,6 +30,40 @@ limit_top = -1024
 limit_right = 2050
 limit_bottom = 1024
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" groups=["winscreen"]]
+visible = false
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+offset_left = -320.0
+offset_top = -184.0
+offset_right = -280.0
+offset_bottom = -144.0
+scale = Vector2(15.9753, 9.08614)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+texture_filter = 1
+offset_left = -301.0
+offset_top = -136.0
+offset_right = 277.0
+offset_bottom = -110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_hqtel")
+theme_override_font_sizes/font_size = 25
+text = "you got away with the money!!!"
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer"]
+texture_filter = 1
+offset_left = -103.0
+offset_top = -84.0
+offset_right = -63.0
+offset_bottom = -44.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_sweqy")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 fixed_fps = 12
@@ -45,40 +80,9 @@ scale_amount_max = 2.0
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("5_sweqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Area2D"]
-visible = false
-follow_viewport_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="Area2D/CanvasLayer"]
-offset_left = -320.0
-offset_top = -184.0
-offset_right = -280.0
-offset_bottom = -144.0
-scale = Vector2(15.9753, 9.08614)
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="Area2D/CanvasLayer"]
-texture_filter = 1
-offset_left = -301.0
-offset_top = -136.0
-offset_right = 277.0
-offset_bottom = -110.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("3_hqtel")
-theme_override_font_sizes/font_size = 25
-text = "you got away with the money!!!"
-
-[node name="TextureRect" type="TextureRect" parent="Area2D/CanvasLayer"]
-texture_filter = 1
-offset_left = -103.0
-offset_top = -84.0
-offset_right = -63.0
-offset_bottom = -44.0
-scale = Vector2(4, 4)
-texture = ExtResource("4_sweqy")
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
